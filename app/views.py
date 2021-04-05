@@ -35,3 +35,13 @@ def signup(request):
 def logout(request):
     django_logout(request)
     return  HttpResponseRedirect('/')
+
+def index(request):
+    post = Project.objects.all()
+    first = Project.objects.order_by('?').first()
+    form = RatingForm(request.POST)
+    # second = next_in_order(first)
+    # prev_in_order(second) == first # True
+    # last = prev_in_order(first, loop=True)
+            
+    return render(request, 'index.html', {'post':post, 'first':first, 'form':form})
