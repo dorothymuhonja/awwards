@@ -68,8 +68,7 @@
                         {% endif %}
 
                     </div>
-                    <div class="name lead"><a href="{% url 'profile' items.profile.user.username %}">{{
-                            items.profile.user.first_name }} {{ items.profile.user.last_name }}</a></div>
+                    <div class="name lead"><a href="{% url 'profile' items.profile.user.username %}">{{ items.profile.user.username }}</a></div>
                     <!-- <div class="date">@{{ items.profile.user.username }}</div> -->
                     <div class="date lead">{{ items.date| date }}</div>
                 </div>
