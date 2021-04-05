@@ -73,26 +73,26 @@ class Project(models.Model):
         return len(ratings)
     
     def ave_des(self):
-        rate = Rating.objects.filter(project=self)
+        rate = Rating.objects.filter(post=self)
         ret = rate.aggregate(Avg('design'))
         design = ret['design__avg']
         return design
     
     def ave_use(self):
-        rate = Rating.objects.filter(project=self)
+        rate = Rating.objects.filter(post=self)
         ret = rate.aggregate(Avg('usability'))
         usability = ret['usability__avg']
         return usability
     
     def ave_cont(self):
-        rate = Rating.objects.filter(project=self)
+        rate = Rating.objects.filter(post=self)
         ret = rate.aggregate(Avg('content')) 
         content = ret['content__avg']
         return content
     
     def all_ave(self):
         total = 0
-        a = Rating.objects.filter(project=self)
+        a = Rating.objects.filter(post=self)
         ave = [a.aggregate(Avg('design'))['design__avg'], a.aggregate(Avg('usability'))['usability__avg'], a.aggregate(Avg('content'))['content__avg']]
         
         for items in ave:

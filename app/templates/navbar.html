@@ -1,32 +1,40 @@
+<style>
+    .nav-link{
+        text-decoration: none;
+    }
+</style>
+
+
+
 <ul class="nav  justify-content-center font-weight-bold z-depth-1 py-2" style="background-color: black;">
     <a class="navbar-brand white-text" href="#">AWWARDS</a>
     <li class="nav-item">
-        <h4><a class="nav-link white-text" href="/"><i class="fas fa-home"></i> Home</a></h4>
+        <h4><a class="nav-link white-text" href="/"> Home</a></h4>
     </li>
     {% if user.is_authenticated %}
     <li class="nav-item">
-        <h4><a class="nav-link white-text" href="{% url 'addProject' %}"><i class="fas fa-plus-circle"> Post</i></a>
+        <h4><a class="nav-link white-text" href="{% url 'addProject' %}">Post</a>
         </h4>
     </li>
 
     {% if user %}
     <li class="nav-item">
-        <h4> <a class="nav-link white-text" href="{% url 'profile' request.user.username  %}"><i class="fas fa-user-circle"> {{ request.user.username}} </i></a></h4>
+        <h4> <a class="nav-link white-text" href="{% url 'profile' request.user.username  %}">{{ request.user.username}}</a></h4>
     </li>
     {% endif %}
     <li class="nav-item">
-        <h4><a class="nav-link white-text" href="/logout"><i class="fas fa-sign-out-alt"> Logout</i></a></h4>
+        <h4><a class="nav-link white-text" href="/logout">Logout</a></h4>
     </li>
     {% else %}
     <li class="nav-item">
-        <h4><a class="nav-link white-text" href="/account/login"><i class="fas fa-sign-in-alt"> Login</i></a></h4>
+        <h4><a class="nav-link white-text" href="/account/login">Login</a></h4>
     </li>
     <li class="nav-item">
-        <h4><a class="nav-link white-text" href="/signup"><i class="fas fa-user-plus"> Register</i></a></h4>
+        <h4><a class="nav-link white-text" href="/signup">Register</a></h4>
     </li>
     {% endif %}
     <form action="{% url 'search' %}" class="form-inline">
         <input class="form-control" type="text" placeholder="Search Projects" name="project">
-        <button class="btn btn-outline-dark btn-md my-2 my-sm-0 ml-3" type="submit">Search</button>
+        <button class="btn btn-outline-light btn-md my-2 my-sm-0 ml-3" type="submit">Search</button>
     </form>
 </ul>

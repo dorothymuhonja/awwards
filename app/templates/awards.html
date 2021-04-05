@@ -1,4 +1,4 @@
-{%extends 'base.html'%}
+{% include 'base.html'%}
 {% load static %}
 {% load cloudinary %}
 {% load crispy_forms_tags %}
@@ -92,7 +92,7 @@
                         <h5 style="text-decoration: underline;">{{ post.profile.user.username }}</h5>
                         <h6 class="text-muted">@{{ post.profile.user.username }}</h6>
                         <h6 class="card-subtitle text-muted">{{ post.profile.job_title }} <span
-                                style="font-weight: normal;" class="text-muted"><i> <br> from</i> <strong>{{ post.profile.location }}...</strong></span></h6>
+                                style="font-weight: normal;" class="text-muted"><i> <br> from</i> <strong>{{ post.profile.location }}</strong></span></h6>
                     </div>
                 </div>
             </div>
