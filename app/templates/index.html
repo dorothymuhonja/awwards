@@ -1,4 +1,4 @@
-{%include 'base.html'%}
+{% extends 'base.html'%}
 {% load static %}
 {% load cloudinary %}
 
@@ -39,10 +39,6 @@
                 </div>
             </div>
 
-            <!-- <div class="buttons">
-                <a href="" class="white-text"><i class="fas fa-chevron-circle-right fa-2x"></i></a>
-                <a href="" class="white-text"><i class="fas fa-chevron-circle-left fa-2x"></i></a>    
-            </div>  -->
         </div>
     </div>
 </div>
@@ -97,60 +93,7 @@
     </div>
 
 </div>
-<br>
-<!-- Footer -->
-<footer class="page-footer font-small aqua-gradient pt-4">
 
-    <!-- Footer Elements -->
-    <div class="container">
-
-        <!--Grid row-->
-        <div class="row">
-
-            <!--Grid column-->
-            <div class="col-md-6 mb-4">
-
-                <!-- Form -->
-                <form action="{% url 'search' %}" class="form-inline">
-                    <input class="form-control form-control-sm mr-3 w-75" name="project" type="text"
-                        placeholder="Search" aria-label="Search">
-                    <button type="submit" class="btn btn-sm"><i class="fas fa-search" aria-hidden="true"></i></button>
-
-                </form>
-                <!-- Form -->
-
-            </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
-            <div class="col-md-6 mb-4">
-
-                <form class="input-group">
-                    <input type="text" class="form-control form-control-sm" placeholder="Your email"
-                        aria-label="Your email" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-sm btn-outline-dark my-0" type="button">Subscribe</button>
-                    </div>
-                </form>
-
-            </div>
-            <!--Grid column-->
-
-        </div>
-        <!--Grid row-->
-
-    </div>
-    <!-- Footer Elements -->
-
-    <!-- Copyright -->
-    <div class="footer-copyright text-center text-dark py-3">© 2020 Copyright:
-        <a class="text-dark" href="https://mdbootstrap.com/"> MDBootstrap.com</a>
-    </div>
-    <!-- Copyright -->
-
-</footer>
-<!-- Footer -->
-<!-- Jumbotron -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="/static/js/jquery.easypiechart.js"></script>
 <script>
