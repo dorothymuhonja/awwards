@@ -48,13 +48,13 @@ python3 manage.py runserver
 ```
 ## Behaviour Driven Development (BDD)
 #### User
-Create and account and Login
-User can add a website to be rated
-User can rate projects based on the following criteria
+* Create and account and Login
+* User can add a website to be rated
+* User can rate projects based on the following criteria
     * Design
     * Usability
     * Content
-User can like and comment on the websites posted
+* User can like and comment on the websites posted
 
 #### Admin
 Can add, change or delete the websites
