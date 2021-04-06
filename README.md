@@ -57,8 +57,8 @@ python3 manage.py runserver
 * User can like and comment on the websites posted
 
 #### Admin
-Can add, change or delete the websites
-Can delete a user
+* Can add, change or delete the websites
+* Can delete a user
 
 
 ## Email Address
