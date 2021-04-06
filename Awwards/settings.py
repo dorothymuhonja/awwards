@@ -69,7 +69,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # my apps
     'app',
+    # Third party apps
     'cloudinary',
     'rest_framework',
     'crispy_forms',

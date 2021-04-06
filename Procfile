@@ -1,4 +1,4 @@
 release: python3 manage.py makemigrations
 release: python3 manage.py migrate
 
-web: gunicorn awwards.wsgi --log-file -
+web: gunicorn awwards.wsgi:application
