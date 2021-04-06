@@ -60,12 +60,12 @@
                         {% if items.profile.avatar %}
                         <img src="{{ items.profile.avatar.url }}">
                         {% else %}
-                        <img src="/static/img/code.jpg">
+                        <img src="/static/img/default.jpg">
                         {% endif %}
 
                     </div>
                     <div class="name lead"><a href="{% url 'profile' items.profile.user.username %}">{{ items.profile.user.username }}</a></div>
-                    <!-- <div class="date">@{{ items.profile.user.username }}</div> -->
+                   
                     <div class="date lead">{{ items.date| date }}</div>
                 </div>
                 <div class="card-content p-3 lead">

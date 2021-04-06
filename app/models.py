@@ -152,10 +152,6 @@ class Rating(models.Model):
         return f'{self.post} Rating'
             
     
-class Follow(models.Model):
-    follower = models.ForeignKey(User, on_delete=models.CASCADE, related_name='follower')
-    following = models.ForeignKey(User, on_delete=models.CASCADE, related_name='following')
-    
 class Stream(models.Model):
     following = models.ForeignKey(User, on_delete=models.CASCADE, related_name='stream_following')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -165,11 +161,7 @@ class Stream(models.Model):
     def add_project(sender,instance,*args,**kwargs):
         project = instance
         user = project.user
-        followers = Follow.objects.all().filter(following=user)
-        
-        for follower in followers:
-            stream = Stream(project=project, user=follower.follower, date=project.date, following=user)
-            stream.save()
+
             
 class Likes(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_like')

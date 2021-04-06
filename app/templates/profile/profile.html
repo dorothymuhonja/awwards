@@ -15,7 +15,7 @@
         {% if profile.avatar %}
         <img class="round img-fluid rounded-circle" src="{{ profile.avatar.url }}" alt="userpic" />
         {% else %}
-        <img class="round img-fluid rounded-circle" src="/static/img/code.jpg" alt="userpic" />
+        <img class="round img-fluid rounded-circle" src="/static/img/default.jpg" alt="userpic" />
         {% endif %}
 
         <h2>{{ profile.user.first_name }} {{ profile.user.last_name }}</h2>
@@ -25,12 +25,6 @@
         <h6><i class="fas fa-map-marker-alt"> {{ profile.location }}</i></h6>
         {% else %}
         <h6><i class="fas fa-map-marker-alt"> Please Set Your Location..!!</i></h6>
-        {% endif %}
-
-        {% if profile.job_title %}
-        <p><i class="fas fa-briefcase"></i> {{ profile.job_title }}</p>
-        {% else %}
-        <p>Set Your Career Title</p>
         {% endif %}
 
         <div class="contact">
@@ -55,11 +49,6 @@
             <a href="{% url 'editProfile' profile.user %}" class="btn primary">
                 Edit Profile
             </a>
-            {% endif %}
-            {% if follow_status == True %}
-            <a class="btn btn-outline-danger" href="{% url 'follow' profile.user 0 %}">Unfollow</a>
-            {% else %}
-            <a class="btn btn-outline-success" href="{% url 'follow' profile.user 1 %}">Follow</a>
             {% endif %}
 
         </div>

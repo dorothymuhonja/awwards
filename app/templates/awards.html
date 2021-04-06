@@ -85,7 +85,7 @@
                     {% if post.profile.avatar.url %}
                     <img src="{{ post.profile.avatar.url }}" class="float-left rounded-circle img-fluid">
                     {% else %}
-                    <img src="/static/img/code.jpg" class="float-left rounded-circle img-fluid">
+                    <img src="/static/img/default.jpg" class="float-left rounded-circle img-fluid">
                     {% endif %}
 
                     <div class="message">
@@ -133,9 +133,7 @@
             <div class="message">
                 <h5 class="">{{ items.profile.user.first_name }} {{ items.profile.user.last_name }}</h5>
                 <h6 class="text-muted">@{{ items.profile.user.username }}</h6>
-                <h6 class="card-subtitle mb-2 text-muted">{{ items.profile.job_title }} <span
-                        style="font-weight: normal;" class="text-muted"><i>from</i> <strong>{{ items.profile.location
-                            }}...</strong></span></h6>
+                <h6 class="card-subtitle mb-2 text-muted"><span style="font-weight: normal;" class="text-muted"><i>from</i> <strong>{{ items.profile.location }}</strong></span></h6>
                 <ul style="display: none;" id="{{items.profile.id}}" class="skills">
                     <li>
                         <span>Design</span>
@@ -214,13 +212,13 @@
         <img class="d-flex img-fluid rounded-circle avatar z-depth-1-half mr-3" src="{{ items.profile.avatar.url }}"
             alt="Avatar">
         {% else %}
-        <img class="d-flex img-fluid rounded-circle avatar z-depth-1-half mr-3" src="/static/img/code.jpg" alt="Avatar">
+        <img class="d-flex img-fluid rounded-circle avatar z-depth-1-half mr-3" src="/static/img/default.jpg" alt="Avatar">
         {% endif %}
 
         <div class="media-body">
             <h5 class="mt-0 font-weight-bold blue-text">{{ items.profile.user.username }}</h5>
             <span style="color: #111;"> {{ items.comment }}</span>
-            <p class="text-muted">{{ items.date| timesince }} ago...</p>
+            <p class="text-muted">{{ items.date| timesince }} ago</p>
         </div>
     </div>
     <hr>

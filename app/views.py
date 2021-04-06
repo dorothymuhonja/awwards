@@ -68,55 +68,16 @@ def index(request):
     post = Project.objects.all()
     first = Project.objects.order_by('?').first()
     form = RatingForm(request.POST)
-    # second = next_in_order(first)
-    # prev_in_order(second) == first # True
-    # last = prev_in_order(first, loop=True)
             
     return render(request, 'index.html', {'post':post, 'first':first, 'form':form})
-
-# def rating(request, post_id):
-#     post = get_object_or_404(Project, id=post_id)
-#     user = request.user
-#     profile = get_object_or_404(Profile, user=user)
-    
-#     if request.method == "POST":
-#         form = RatingForm(request.POST)
-#         if form.is_valid():
-#             data = form.save(commit=False)
-#             data.project = post
-#             data.profile = profile
-#             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-#         else:
-#             form = RatingForm()
-            
-#     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     
 
 @login_required
 def single_project(request,post_id):
     post = get_object_or_404(Project, id=post_id)
-    # pics = Screenshot.objects.get(project=post_id)
     user = request.user
     profile = get_object_or_404(Profile, user=user)
     comments = Comment.objects.filter(project=post).order_by('-date')
-    # rating = Rating.objects.filter(project=post)
-    # if_rate = Rating.objects.filter(profile=profile).exists()
-    
-    # try:        
-    #     if request.method == "POST":
-    #         form_rate = RatingForm(request.POST)
-    #         if form_rate.is_valid():
-    #             data = form_rate.save(commit=False)
-    #             data.project = post
-    #             data.profile = profile
-    #             data.save()
-    #             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-    #         else:
-    #             form = RatingForm()
-    # except ValueError:
-    #     raise Http404()
-
-
     ratings = Rating.objects.filter(user=request.user, post=post).first()
     rating_status = None
     if ratings is None:
@@ -206,31 +167,7 @@ def profile_edit(request,username):
     legend = 'Edit Profile'
     return render(request, 'profile/update.html', {'legend':legend, 'form':EditProfileForm})
 
-@login_required
-def follow(request, username, option):
-    user = request.user
-    folllowing = get_object_or_404(User, username=username)
     
-    try:
-        f, created = Follow.objects.get_or_create(follower=user, following=folllowing)
-        
-        if int(option) == 0:
-            f.delete()
-            Stream.objects.filter(following=folllowing, user=user).all().delete()
-            
-        else:
-            posts = Project.objects.all().filter(user=folllowing)[:10]
-            
-            with transaction.atomic():
-                for post in posts:
-                    stream = Stream(post=post, user=user, date=post.date, following=folllowing)
-                    stream.save()
-                    
-        return HttpResponseRedirect(reverse('profile', args=[username]))
-    except User.DoesNotExist:
-        return HttpResponseRedirect(reverse('profile', args=[username]))      
-
-
 @login_required
 def profile(request, username):
     user = get_object_or_404(User, username=username)
@@ -239,13 +176,9 @@ def profile(request, username):
     posts = Project.objects.filter(user=user).order_by("-date")
     
     post_count = Project.objects.filter(user=user).count()
-    follower_count = Follow.objects.filter(following=user).count()
-    following_count = Follow.objects.filter(follower=user).count()
-    follow_status = Follow.objects.filter(following=user, follower=request.user).exists()
+
     
-    return render(request,'profile/profile.html', {'user':user, 'profile':profile, 'posts':posts, 'post_count':post_count, 
-                                                   'follower_count':follower_count, 'following_count':following_count,'follow_status':follow_status,
-                                                   'skills':skills})
+    return render(request,'profile/profile.html', {'user':user, 'profile':profile, 'posts':posts, 'post_count':post_count, 'skills':skills})
 
 @login_required
 def post_project(request):

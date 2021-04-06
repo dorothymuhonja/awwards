@@ -15,7 +15,6 @@ urlpatterns=[
     path('<uuid:post_id>/like', views.like, name='likePost'),
     path('profile/<username>', views.profile, name='profile'),
     path('profile/<username>/edit', views.profile_edit, name='editProfile'),
-    path('profile/<username>/follow/<option>', views.follow, name='follow'),
     path('api/user_profiles', views.UserProfiles.as_view()),
     path('api/projects', views.Projects.as_view()),
 ]
