@@ -69,7 +69,7 @@ def index(request):
     first = Project.objects.order_by('?').first()
     form = RatingForm(request.POST)
             
-    return render(request, 'index.html', {'post':post, 'first':first, 'form':form})
+    return render(request, 'index.html', {'post':post[::-1], 'first':first, 'form':form})
     
 
 @login_required
