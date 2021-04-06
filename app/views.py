@@ -172,13 +172,12 @@ def profile_edit(request,username):
 def profile(request, username):
     user = get_object_or_404(User, username=username)
     profile = Profile.objects.get(user=user)
-    skills = Profile.objects.all()
     posts = Project.objects.filter(user=user).order_by("-date")
     
     post_count = Project.objects.filter(user=user).count()
 
     
-    return render(request,'profile/profile.html', {'user':user, 'profile':profile, 'posts':posts, 'post_count':post_count, 'skills':skills})
+    return render(request,'profile/profile.html', {'user':user, 'profile':profile, 'posts':posts, 'post_count':post_count})
 
 @login_required
 def post_project(request):

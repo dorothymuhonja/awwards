@@ -153,7 +153,6 @@ class Rating(models.Model):
             
     
 class Stream(models.Model):
-    following = models.ForeignKey(User, on_delete=models.CASCADE, related_name='stream_following')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     date = models.DateTimeField()
@@ -169,7 +168,6 @@ class Likes(models.Model):
 
 class Comment(models.Model):
     comment = models.TextField(null=True)
-    # user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_comment')
     date = models.DateTimeField(auto_now_add=True)
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='post_comment')
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='commenter_profile')
